@@ -1,50 +1,39 @@
 import csv
 import os 
-def nuevo_item(estructura,base,encabezado):
-    continente  =  input("Ingrese el continente al que quiere añadir pais: ").capitalize()
+
+def nuevo_item(estructura, base, encabezado):
+    continente = input("Ingrese el continente al que quiere añadir país: ").capitalize()
+    
     if continente in estructura:
-        pais = input("Ingrese el nuevo pais a añadir: ").capitalize()
-        if pais not in estructura[continente]:
-            estructura[continente][pais] = [] #Creo una lista con el nuevo pais
-            provincia = input("Ingrese la provincia o estado a añadir: ")
-            if provincia not in estructura[continente][pais]:
-                estructura[continente][pais].append(provincia) #Agrego la provincia a la lista
-            else:
-                print("Provincia ya registrada.")
-                return #Si la provincia ya esta registrada sale de la función
+        pais = input("Ingrese el nuevo país a añadir: ").capitalize()
+        
+        if pais not in estructura[continente]: # Si el país no está, entra en la condicion
+            estructura[continente][pais] = []
+            print(f"País {pais} añadido al continente {continente}.")
+        
+        provincia = input("Ingrese la provincia o estado a añadir: ").capitalize()
+        
+        if provincia not in estructura[continente][pais]: # Si la provincia no existe dentro del país, la agregamos
+            estructura[continente][pais].append(provincia)
             
-            poblacion = input(f"Ingresa la población de {pais}: ")
-            territorio = input(f"Ingresa el territorio de {pais}: ")
+            ruta_continente = os.path.join(base, continente) # Creo carpetas
+            ruta_pais = os.path.join(ruta_continente, pais)
+            os.makedirs(ruta_pais, exist_ok=True)
             
-            ruta_continente = os.path.join(base,continente) #Creo las carpetas
-            ruta_pais = os.path.join(ruta_continente,pais)
-            os.makedirs(ruta_pais,exist_ok=True)
+            archivo = os.path.join(ruta_pais, f"{provincia}.csv") # Archivo CSV para esa provincia
             
-            #Creo el archivo csv
-            archivo = os.path.join(ruta_pais,f"{pais}.csv")
+            poblacion = input(f"Ingresa la población de {provincia}: ")
+            territorio = input(f"Ingresa el territorio de {provincia}: ")
             
-            with open(archivo,"w",newline="",encoding="utf-8") as f:
+            with open(archivo, "w", newline="", encoding="utf-8") as f: # Crear el CSV de la provincia
                 writer = csv.writer(f)
                 writer.writerow(encabezado)
-                writer.writerow([poblacion,territorio])
-            print("Añadido correctamente")
+                writer.writerow([poblacion, territorio])
             
-        #Si el pais ya existe entra al else    
+            print(f"Provincia {provincia} añadida.")
+        
         else:
-            print("Pais ya registrado.")
-            provincia = input("Ingrese la provincia o estado a añadir:")
-            if provincia not in estructura[continente][pais]:
-                estructura[continente][pais].append(provincia)
-                
-                ruta_pais = os.path.join(base,continente,pais)
-                archivo = os.path.join(ruta_pais,f"{pais}.csv")
-
-                
-                with open(archivo,"w",newline="",encoding="urf-8") as f:
-                    writer = csv.writer(f)
-                    writer.writerow(encabezado)
-                    writer.writerow(poblacion,territorio)
-            
-    else:
-        print("Continente no valido.")
+            print("Provincia ya registrada.")
     
+    else:
+        print("Continente no válido.")
