@@ -39,8 +39,8 @@ def eliminar_item(estructura, base):
         print(f"\nÍtem eliminado correctamente\n")
 
     except FileNotFoundError: #Validaciones 
-        print("Archivo no encontrado.")
+        print("Archivo no fue  encontrado.")
     except PermissionError:
-        print("No tienes permisos para modificar el archivo.")
-    except Exception as e:
-        print(f"Error inesperado: {e}")
+        print("No tienes permisos.")
+    except Exception as error:
+        print(f"Error: {error}")

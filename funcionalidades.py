@@ -1,6 +1,10 @@
 import csv, os
 
 def funcionalidades_adicionales(base):
+    if not os.path.exists(base):
+            print("No hay carpeta base.")
+            return
+    
     datos = []
     conteo = {}
 

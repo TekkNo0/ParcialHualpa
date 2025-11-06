@@ -12,9 +12,9 @@ from funcionalidades import funcionalidades_adicionales
 
 #-------------Defino la estructura de la ruta
 BASE = "datos"
+encabezado = ["habitantes","territorio"] #Defino los encabezados de los csv.
 creado = constructor_estructura
 estructura = cargar_estructura(BASE)
-encabezado = ["habitantes","territorio"] #Defino los encabezados de los csv.
 #-------------
 
 menu = True
