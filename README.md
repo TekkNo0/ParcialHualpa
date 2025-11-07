@@ -4,9 +4,7 @@
 # El programa organiza los datos de forma jerarquica en carpetas y en archivos CSV. Cada archivo contiene información de las provincias.
 
 # Integrantes del grupo: Maximiliano Monardez, Matias Ruiz y Thiago Oviedo.
-#
 # Detallamiento de la jerarquia de los datos en las carpetas y archivos csv:
-#
 # El codigo está modularizado en funciones como: 
 
 # constructor_estructura() -->
@@ -28,7 +26,7 @@
 # Esta función pide datos al usuario y los guarda modificando/pisando los anteriores, similarmente a la función eliminar_item que elimina items si el user lo desea.
 
 # Función mostrar_datos() -->
-# Esta función sirve para que el usuario pueda buscar items existentes o que haya ingresado él, buscandolos efectivamente en "estructura" y sus sublistas y en caso de no encontrarlos lanza un mensaje de validación. Contiene try-except para errores inesperados...
+# Esta función sirve para que el usuario pueda buscar items existentes o que haya ingresado él, buscandolos efectivamente en "estructura" y sus sublistas y en caso de no encontrarlos lanza un mensaje de validación. Contiene try-except para errores inesperados.
 
 # Función nuevo_item() -->
 # Sirve para que el usuario agregue un nuevo país/provincia (o estado) a cierto continente. Valida correctamente si el país/provincia ya existe en los archivos con un mensaje de error. Permite ingresar la superficie y poblacion de la provincia nueva. Por último, cubre las posibles entradas de tipos de datos inesperados por el programa --> int, bool, caracteres extraños.
