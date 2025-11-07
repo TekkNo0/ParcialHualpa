@@ -43,4 +43,3 @@ while menu:
         case 6:
             print("Saliendo del programa...")
             break
-                

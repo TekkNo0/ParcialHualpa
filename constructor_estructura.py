@@ -17,18 +17,15 @@ def constructor_estructura(base,estructura,encabezado=None):
             continue
         if isinstance(valor, dict): #Caso de recursividad
             constructor_estructura(ruta, valor, encabezado) #Ahora la base es la ruta por lo que baja un nivel, 
-            
         elif isinstance(valor, (list,tuple)): #Valor contiene nombre de ciudades
             for i in valor: 
                 archivo = os.path.join(ruta, limpiar_dato(i) + ".csv") #Construye la ruta del archivo y se agrega el .csv
                 try:
-                    with open(archivo,"w",newline="",encoding="utf-8") as f: #Abro el archivo en modo de escritura 
+                    with open(archivo,"w",newline="",encoding="utf-8") as f: #Abro el archivo en modo de escritura
                         writer = csv.writer(f)
-                        writer.writerow(encabezado) #Escribe el encabezado 
+                        writer.writerow(encabezado) #Escribe el encabezado
                         
                 except Exception as error: #Control de errores
                     print("No se pudo crear el archivo",archivo,"->", error)
         else:
             print("Valor no soportado.",{type(valor)})
-            
-
